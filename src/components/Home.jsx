@@ -4,6 +4,8 @@ const Home = () => {
 
   const [name1, setName1] = useState("");
   const [name2, setName2] = useState("");
+  const [show, setShow] = useState(false);
+  const [meter, setMeter] = useState("0");
 
   const newname1 = function (e) {
     setName1(e.target.value);
@@ -15,6 +17,7 @@ const Home = () => {
 
   const subFunc = (e) => {
     e.preventDefault();
+    setShow(true);
     const a1 = ["LOVES"];
     const a2 = [];
     a2.push(name1);
@@ -71,6 +74,10 @@ const Home = () => {
       firstAndLastSum = newSumArray;
     }
 
+    console.log("firstAndLastSum", firstAndLastSum)
+
+    setMeter(firstAndLastSum);
+
     setName1("");
     setName2("");
 
@@ -86,6 +93,9 @@ const Home = () => {
           <input type="submit" value="Submit" />
         </div>
       </form>
+      {show===true && (
+        <div>{meter}</div>
+      )}
     </div>
   )
 }
