@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './home.css';
 
 const Home = () => {
 
@@ -48,7 +49,7 @@ const Home = () => {
     const a4v1 = Object.entries(letterCounts).map(([letter, count]) => `${count}`);
     const a4 = a4v1.map(str => Number(str));
 
-    console.log("A4: ",a4)
+    console.log("A4: ", a4)
 
     let firstAndLastSum = [];
 
@@ -63,7 +64,7 @@ const Home = () => {
       }
     }
 
-    console.log("firstAndLastSum: ",firstAndLastSum)
+    console.log("firstAndLastSum: ", firstAndLastSum)
 
     // i have doubt with length, should i keep 2 or 1
     while (firstAndLastSum.length > 1) {
@@ -89,17 +90,35 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={(e) => { subFunc(e) }}>
-        <div>
+        <div className='inputs'>
           <label>Enter Names</label>
-          <input type="text" onChange={(e) => { newname1(e) }} />
-          <input type="text" onChange={(e) => { newname2(e) }} />
-          <input type="submit" value="Submit" />
+          <div className="form__group field">
+            <input type="text" className="form__field" placeholder="Name" onChange={(e) => { newname1(e) }} required />
+            <label className="form__label">Person 1</label>
+          </div>
+          <div className="form__group field">
+            <input type="text" className="form__field" placeholder="Name" onChange={(e) => { newname2(e) }} required />
+            <label className="form__label">Person 2</label>
+          </div>
+          {/* <input type="text" onChange={(e) => { newname1(e) }} /> */}
+          {/* <input type="text" onChange={(e) => { newname2(e) }} /> */}
+          {/* <input type="submit" value="Submit" /> */}
+          <div>
+            <button className="btn-class-name">
+              <span className="back"></span>
+              <span className="front"></span>
+            </button>
+          </div>
         </div>
       </form>
-      {show===true && (
-        <div>{meter}</div>
+      {show === true && (
+        <>
+          <div className="loader">
+          <div className='output'>{meter}%</div>
+          </div>
+        </>
       )}
     </div>
   )
