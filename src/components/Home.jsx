@@ -48,6 +48,8 @@ const Home = () => {
     const a4v1 = Object.entries(letterCounts).map(([letter, count]) => `${count}`);
     const a4 = a4v1.map(str => Number(str));
 
+    console.log("A4: ",a4)
+
     let firstAndLastSum = [];
 
     for (let i = 0; i < Math.ceil(a4.length / 2); i++) {
@@ -61,7 +63,10 @@ const Home = () => {
       }
     }
 
-    while (firstAndLastSum.length > 2) {
+    console.log("firstAndLastSum: ",firstAndLastSum)
+
+    // i have doubt with length, should i keep 2 or 1
+    while (firstAndLastSum.length > 1) {
       const newSumArray = [];
       for (let i = 0; i < Math.ceil(firstAndLastSum.length / 2); i++) {
         if (i === firstAndLastSum.length - 1 - i) {
@@ -74,7 +79,7 @@ const Home = () => {
       firstAndLastSum = newSumArray;
     }
 
-    console.log("firstAndLastSum", firstAndLastSum)
+    console.log("firstAndLastSum Updated", firstAndLastSum)
 
     setMeter(firstAndLastSum);
 
