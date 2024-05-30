@@ -42,25 +42,38 @@ const Home = () => {
 
     const letterCounts = countLetters([a1, a2, a3]);
 
-    console.log("Letter Counts:", letterCounts);
+    const a4v1 = Object.entries(letterCounts).map(([letter, count]) => `${count}`);
+    const a4 = a4v1.map(str => Number(str));
 
-    // const a4 = [];
-    // a4.push(letterCounts);
+    let firstAndLastSum = [];
 
-    // console.log("Array4:", a4);
+    for (let i = 0; i < Math.ceil(a4.length / 2); i++) {
+      if (i === a4.length - 1 - i) {
+        // Push the middle element directly if there's only one element left
+        firstAndLastSum.push(a4[i]);
+      } else {
+        // Sum the first and last elements and push the result
+        const sum = a4[i] + a4[a4.length - 1 - i];
+        firstAndLastSum.push(sum);
+      }
+    }
 
-    const a4 = Object.entries(letterCounts).map(([letter, count]) => `${count}`);
-
-    console.log("Array4:", a4);
+    while (firstAndLastSum.length > 2) {
+      const newSumArray = [];
+      for (let i = 0; i < Math.ceil(firstAndLastSum.length / 2); i++) {
+        if (i === firstAndLastSum.length - 1 - i) {
+          newSumArray.push(firstAndLastSum[i]);
+        } else {
+          const sum = firstAndLastSum[i] + firstAndLastSum[firstAndLastSum.length - 1 - i];
+          newSumArray.push(sum);
+        }
+      }
+      firstAndLastSum = newSumArray;
+    }
 
     setName1("");
     setName2("");
 
-    // console.log("Array1:", a1);
-    // console.log("Array2:", a2);
-    // console.log("Array3:", a3);
-    // console.log("Name 1:", name1);
-    // console.log("Name 2:", name2);
   }
 
   return (
