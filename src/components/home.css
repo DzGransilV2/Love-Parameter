@@ -41,6 +41,12 @@
 }
 
 
+svg{
+  height: 150px;
+  width: 150px;
+}
+
+
 form{
     display: flex;
     height: 50%;
