@@ -83,10 +83,12 @@ const Home = () => {
     console.log("firstAndLastSum Updated", firstAndLastSum)
 
     setMeter(firstAndLastSum);
-
     setName1("");
     setName2("");
+  }
 
+  const reload = () => {
+    window.location.reload();
   }
 
   return (
@@ -116,7 +118,10 @@ const Home = () => {
       {show === true && (
         <>
           <div className="loader">
-          <div className='output'>{meter}%</div>
+            <div className='output'>{meter}%</div>
+          </div>
+          <div className='resetBtn'>
+            <button className='resBtn' onClick={reload}>Reset</button>
           </div>
         </>
       )}
